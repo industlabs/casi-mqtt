@@ -1,8 +1,8 @@
-	const consoleAdd = function (text) {
-        const main = document.getElementById('main');
-        main.innerHTML += text + '<br />';
-        main.scrollTop = main.scrollHeight;
-      }
+	//const consoleAdd = function (text) {
+       // const main = document.getElementById('main');
+       // main.innerHTML += text + '<br />';
+      //  main.scrollTop = main.scrollHeight;
+     // }
 
       // Connection to your MQTT server, using websocket protocol.
       // Note: you have to activate websocket support on Stackhero console, in your service configuration.
