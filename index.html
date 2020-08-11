@@ -11,6 +11,11 @@
     <h1>MQTT Websocket</h1>
     <br />
     First edit this file to define the URL, username and password of your MQTT server.
+     <div>
+        <div>Subscribed to <input type='text' id='topic' disabled />
+        Status: <input type='text' id='status' size="80" disabled /></div>
+        <ul id='ws' style="font-family: 'Courier New', Courier, monospace;"></ul>
+    </div>
     <br />
     <div id="main" style="border: 1px solid #ccc; margin 20px; padding: 20px; height: 500px; overflow: auto;">Loading...<br /></div>
     <script type="text/javascript">
@@ -55,26 +60,26 @@
       client.on('connect', function () {
         consoleAdd('Connected!');
 
-        const topic = 'presence';
-        const topic2 = 'room/light';
+        //const topic = 'presence';
+        //const topic2 = 'room/light';
 	const message = 'Hello MQTT';
 
         // Subscribe to topic "presence"
-        client.subscribe(topic2, function (err, res) {
+        client.subscribe('#topic', function (err, res) {
           if (err) {
-            consoleAdd('Error when subscribing to topic ' + topic2 + ': ' + err);
+            consoleAdd('Error when subscribing to topic ' + '#topic' + ': ' + err);
             return;
           }
 
           // Sending message "Hello MQTT" to topic "presence"
-          consoleAdd('Sending message "' + message + '" to topic "' + topic + '"');
+          consoleAdd('Sending message "' + message + '" to topic "' + '#topic' + '"');
           client.publish(
-            topic,
+            '#topic',
             message,
             { qos: 2 },
             function(err) {
               if (err) {
-                consoleAdd('Error when publishing to topic ' + topic + ': ' + err);
+                consoleAdd('Error when publishing to topic ' + '#topic' + ': ' + err);
               }
             }
           );
@@ -82,8 +87,8 @@
       });
 
       // Show messages received on every topic
-      client.on('message', function (topic2, message) {
-        consoleAdd('Message received from MQTT server on topic "' + topic2 + '": ' + message);
+      client.on('message', function ('#topic', message) {
+        consoleAdd('Message received from MQTT server on topic "' + '#topic' + '": ' + message);
       });
     </script>
   </body>
