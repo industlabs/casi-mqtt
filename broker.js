@@ -67,5 +67,5 @@
 
       // Show messages received on every topic
       client.on('message', function (topic2, message) {
-        consoleAdd('✅ Message received from MQTT server on topic "' + topic2 + '": ' + message);
+         document.getElementById("mqtt-data").innerHTML = consoleAdd('✅ Message received from MQTT server on topic "' + topic2 + '": ' + message);
       });
