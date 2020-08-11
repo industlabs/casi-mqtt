@@ -25,7 +25,7 @@ function startConnect() {
     //password: "4887_Alpha",
     //onSuccess:onConnect,
     //onFailure:doFail
-    }
+    //}
    
     const client = mqtt.connect(host, { "admin", "4887_Alpha" });
     //const username = 'admin';
