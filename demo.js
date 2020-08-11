@@ -20,7 +20,7 @@ function startConnect() {
     client.onConnectionLost = onConnectionLost;
     client.onMessageArrived = onMessageArrived;
     var options = {
-    useSSL: true,
+    useSSL: false,
     userName: "admin",
     password: "4887_Alpha",
     onSuccess:onConnect,
