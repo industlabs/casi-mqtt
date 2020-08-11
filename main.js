@@ -1,5 +1,5 @@
 // client, user and device details
-var serverUrl   = "wss://mqtt.casi.io/mqtt";     /* wss://mqtt.cumulocity.com/mqtt for a secure connection */
+var serverUrl   = "wss://mqtt.casi.io:8084/mqtt";     /* wss://mqtt.cumulocity.com/mqtt for a secure connection */
 var clientId    = "casi-1020";
 var device_name = "My JS MQTT device";
 var tenant      = "";
