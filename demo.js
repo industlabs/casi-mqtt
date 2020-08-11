@@ -1,4 +1,6 @@
-var mqtt = require('mqtt');
+//var mqtt = require('mqtt');
+    var mqtt;
+
 
 // Called after form input is processed
 function startConnect() {
