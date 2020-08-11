@@ -1,3 +1,5 @@
+var mqtt = require('mqtt');
+
 // Called after form input is processed
 function startConnect() {
     // Generate a random client ID
