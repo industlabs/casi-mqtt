@@ -14,7 +14,7 @@
     <br />
     <form id="connection-info-form">
     <b>Hostname or IP Address:</b> 
-    <input id="host" type="text" name="host" value="wss://mqtt.casi.io:8084/mqtt"><br>
+    <input id="url" type="text" name="url" value="wss://mqtt.casi.io:8084/mqtt"><br>
     <b>Port:</b>
     <input id="port" type="text" name="port" value="8084"><br>
     <b>Topic:</b>
@@ -30,15 +30,15 @@
     clientID = "clientID_" + parseInt(Math.random() * 100);
 
     // Fetch the hostname/IP address and port number from the form
-    host = document.getElementById("host").value;
+    host = document.getElementById("url").value;
     port = document.getElementById("port").value;
 
     // Print output for the user in the messages div
-    document.getElementById("messages").innerHTML += '<span>Connecting to: ' + host + ' on port: ' + port + '</span><br/>';
+    document.getElementById("messages").innerHTML += '<span>Connecting to: ' + url + ' on port: ' + port + '</span><br/>';
     document.getElementById("messages").innerHTML += '<span>Using the following client value: ' + clientID + '</span><br/>';
 
     // Initialize new Paho client connection
-    const client = mqtt.connect(host, { username, password });
+    const client = mqtt.connect(url, { username, password });
 
     //client = new Paho.MQTT.Client(host, Number(port), clientID);
 
@@ -48,7 +48,7 @@
 
     client.connect({ 
         onSuccess: onConnect,
-        onFailure: document.getElementById("messages").innerHTML += '<span>ERROR: Connection to: ' + host + ' on port: ' + port + ' failed.</span><br/>';
+        onFailure: document.getElementById("messages").innerHTML += '<span>ERROR: Connection to: ' + url + ' on port: ' + port + ' failed.</span><br/>';
     });
     }
     </script>
