@@ -22,7 +22,7 @@ function startConnect() {
             //onFailure: function (message) {
            //     $('#status').val("Connection failed: " + message.errorMessage + "Retrying");
            //     setTimeout(MQTTconnect, reconnectTimeout);
-            }
+           // }
         };
     
     // Set callback handlers
