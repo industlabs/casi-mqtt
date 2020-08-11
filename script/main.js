@@ -12,8 +12,6 @@ var temperature = 25;
 // configure the client to Cumulocity IoT
 var client = new Paho.MQTT.Client(serverUrl, clientId);
 
-
-
 // display all delivered messages
 client.onMessageDelivered = function onMessageDelivered (message) {
     log('Message "' + message.payloadString + '" delivered');
@@ -31,7 +29,8 @@ function createDevice () {
             publish('s/us', '114,c8y_Restart', function() {
                 log('Enable restart operation support');
                 //listen for operation
-                client.subscribe("s/ds");
+               // client.subscribe("s/ds");
+                  client.subscribe("room/light");
             })
 
             // send temperature measurement
