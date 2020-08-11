@@ -2,6 +2,7 @@
 <html>
 <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
 <script src="/script/config.js" type="text/javascript"></script>
+
 <head>
     <title>CASI MQTT Websocket</title>
 </head>
@@ -13,12 +14,25 @@
     <br />
     <div id="main" style="border: 1px solid #ccc; margin 20px; padding: 20px; height: 500px; overflow: auto;">⏳ Loading...<br /></div>
     <script type="text/javascript">
-	const consoleAdd = function (text) {
+      const consoleAdd = function (text) {
         const main = document.getElementById('main');
         main.innerHTML += text + '<br />';
         main.scrollTop = main.scrollHeight;
-      } 
-	consoleAdd('⏳ Connecting to MQTT server ' + url + '...');
+      }
+
+      // Connection to your MQTT server, using websocket protocol.
+      // Note: you have to activate websocket support on Stackhero console, in your service configuration.
+      // This example uses the library MQTT.js (https://github.com/mqttjs/MQTT.js)
+
+      // IMPORTANT: you should create a dedicated user with limited rights.
+      // Remember that any client using this page can read the source code and get those credentials!
+      // Note: on Node-RED, the websocket URL ends with "/mqtt/"
+      //const url = 'wss://mqtt.casi.io:8084/mqtt';
+      //const username = 'null';
+      //const password = 'null';
+
+
+      consoleAdd('⏳ Connecting to MQTT server ' + url + '...');
 
       // Connecting to MQTT server using websockets
       const client = mqtt.connect(url, { username, password });
@@ -69,9 +83,8 @@
 
       // Show messages received on every topic
       client.on('message', function (topic2, message) {
-      consoleAdd('✅ Message received from MQTT server on topic "' + topic2 + '": ' + message);
+        consoleAdd('✅ Message received from MQTT server on topic "' + topic2 + '": ' + message);
       });
     </script>
-   
-    </body>
+  </body>
 </html>
