@@ -15,10 +15,6 @@ function startConnect() {
     //private static final String username = "admin";
     //private static final String password = "4887_Alpha";
     
-    client = new Paho.MQTT.Client()
-    client.username_pw_set(“admin”, “4887_Alpha”)
-    //client.connect(“broker.mqttdashboard.com”)
-
     client = new Paho.MQTT.Client(host, Number(port), clientID);
    
    
