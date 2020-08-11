@@ -15,19 +15,19 @@ function startConnect() {
     //private static final String username = "admin";
     //private static final String password = "4887_Alpha";
     
-    client = new Paho.MQTT.Client(host, Number(port), clientID);
-     // set callback handlers
-    client.onConnectionLost = onConnectionLost;
-    client.onMessageArrived = onMessageArrived;
-    var options = {
-    useSSL: false,
-    userName: "admin",
-    password: "4887_Alpha",
-    onSuccess:onConnect,
-    onFailure:doFail
+    //client = new Paho.MQTT.Client(host, Number(port), clientID);
+    // set callback handlers
+    //client.onConnectionLost = onConnectionLost;
+    //client.onMessageArrived = onMessageArrived;
+    //var options = {
+    //useSSL: true,
+    //userName: "admin",
+    //password: "4887_Alpha",
+    //onSuccess:onConnect,
+    //onFailure:doFail
     }
    
-    // const client = mqtt.connect(host, { username, password });
+    const client = mqtt.connect(host, { "admin", "4887_Alpha" });
     //const username = 'admin';
    // const password = '4887_Alpha';
 
