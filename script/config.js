@@ -1,9 +1,8 @@
-//url = 'wss://mqtt.casi.io:8084/mqtt';
+//url.test = 'wss://test.test.ioo:8084/mqtt';
 // host = '172.16.153.122';	// hostname or IP address
-//host = 'mqtt.casi.io';	// hostname or IP address
-// host = '172.16.153.110';	// hostname or IP address
-//port = 8084;
-//topic = '#';		// topic to subscribe to
+//host.test = 'mqtt.casi.io';	// hostname or IP address
+//port.test = 8084;
+//topic.test = '#';		// topic to subscribe to
 //useTLS = false;
 //username = null;
 //password = null;
