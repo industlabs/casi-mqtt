@@ -1,7 +1,3 @@
-//var mqtt = require('mqtt');
-    var mqtt;
-
-
 // Called after form input is processed
 function startConnect() {
     // Generate a random client ID
@@ -17,7 +13,7 @@ function startConnect() {
 
     // Initialize new Paho client connection
     client = new Paho.MQTT.Client(host, Number(port), clientID);
-    
+    var mqtt;
     var options = {
             timeout: 3,
             useSSL: useTLS,
