@@ -90,3 +90,11 @@ function updateScroll() {
     var element = document.getElementById("messages");
     element.scrollTop = element.scrollHeight;
 }
+
+function init () {
+    client.connect({
+        userName: username,
+        password: password,
+       onSuccess: createDevice
+    });
+}
