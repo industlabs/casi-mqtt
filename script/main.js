@@ -12,19 +12,7 @@ var temperature = 25;
 // configure the client to Cumulocity IoT
 var client = new Paho.MQTT.Client(serverUrl, clientId);
 
-// display all incoming messages
-client.onMessageArrived = function (message) {
-    log('Received operation "' + message.payloadString + '"');
-    if (message.payloadString.indexOf("510") == 0) {
-        log("Simulating device restart...");
-        publish("s/us", "501,c8y_Restart");
-        log("...restarting...");
-        setTimeout(function() {
-            publish("s/us", "503,c8y_Restart");
-        }, 1000);
-        log("...done...");
-    }
-};
+
 
 // display all delivered messages
 client.onMessageDelivered = function onMessageDelivered (message) {
