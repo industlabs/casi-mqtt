@@ -37,7 +37,7 @@ function startConnect() {
     username: "admin",
     password: "4887_Alpha",
     onSuccess:onConnect,
-    onFailure:doFail,
+    //onFailure:doFail,
     }
 
     // Set callback handlers
