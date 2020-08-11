@@ -13,18 +13,7 @@ function startConnect() {
 
     // Initialize new Paho client connection
     client = new Paho.MQTT.Client(host, Number(port), clientID);
-    var mqtt;
-    var options = {
-            timeout: 3,
-            useSSL: useTLS,
-            cleanSession: cleansession,
-            onSuccess: onConnect,
-            //onFailure: function (message) {
-           //     $('#status').val("Connection failed: " + message.errorMessage + "Retrying");
-           //     setTimeout(MQTTconnect, reconnectTimeout);
-           // }
-        };
-    
+   
     // Set callback handlers
     client.onConnectionLost = onConnectionLost;
     client.onMessageArrived = onMessageArrived;
