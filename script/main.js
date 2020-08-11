@@ -35,6 +35,25 @@ client.onMessageDelivered = function onMessageDelivered (message) {
     }
 };
 
+function createDevice () {
+    // register a new device
+    publish("s/us", "100," + device_name + ",c8y_MQTTDevice", function() {
+        // set hardware information
+        publish("s/us", "110,S123456789,MQTT test model,Rev0.1", function() {
+            publish('s/us', '114,c8y_Restart', function() {
+                log('Enable restart operation support');
+                //listen for operation
+                client.subscribe("s/ds");
+            })
+
+            // send temperature measurement
+            setInterval(function() {
+                publish("s/us", '211,'+temperature);
+                temperature += 0.5 - Math.random();
+            }, 3000);
+        });
+    });
+}
 
 // send a message
 function publish (topic, message, onMessageDeliveredCallback) {
