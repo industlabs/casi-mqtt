@@ -39,7 +39,7 @@
     document.getElementById("messages").innerHTML += '<span>Using the following client value: ' + clientID + '</span><br/>';
 
     // Initialize new Paho client connection
-    const client = mqtt.connect(url, { username, password });
+    client = mqtt.connect(url, { username, password });
     //client = new Paho.MQTT.Client(url, Number(port), clientID);
 
     // Set callback handlers
