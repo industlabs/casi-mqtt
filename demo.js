@@ -29,7 +29,7 @@ function startConnect() {
     // Connect the client, if successful, call onConnect function
     client.connect({ 
         onSuccess: onConnect,
-        useSSL: true
+        useSSL: true,
     });
 }
 
