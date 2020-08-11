@@ -14,8 +14,8 @@ function startConnect() {
     // Initialize new Paho client connection
     //client = new Paho.MQTT.Client(host, Number(port), clientID);
     client = mqtt.connect(host, { username, password });
-    const username = 'admin';
-    const password = '4887_Alpha';
+    //const username = 'admin';
+   // const password = '4887_Alpha';
 
 
     // Set callback handlers
