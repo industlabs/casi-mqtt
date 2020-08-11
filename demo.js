@@ -12,7 +12,9 @@ function startConnect() {
     document.getElementById("messages").innerHTML += '<span>Using the following client value: ' + clientID + '</span><br/>';
 
     // Initialize new Paho client connection
-    client = new Paho.MQTT.Client(host, Number(port), clientID);
+    //client = new Paho.MQTT.Client(host, Number(port), clientID);
+    client = mqtt.connect(host, { username, password });
+
 
     // Set callback handlers
     client.onConnectionLost = onConnectionLost;
