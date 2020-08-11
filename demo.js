@@ -34,18 +34,17 @@ function startConnect() {
     // Set callback handlers
     client.onConnectionLost = onConnectionLost;
     client.onMessageArrived = onMessageArrived;
-    
-   // Connect the client, if successful, call onConnect function
-    client.connect({ 
-    onSuccess: onConnect,        
-    });
-    var options = {
+     var options = {
     //useSSL: true,
     username: "admin",
     password: "4887_Alpha",
     onSuccess:onConnect,
     onFailure:doFail,
     }
+   // Connect the client, if successful, call onConnect function
+    client.connect({ 
+    onSuccess: onConnect,        
+    });
 }
 
 // Called when the client connects
