@@ -25,9 +25,10 @@
     <br />
 	
     <script type="text/javascript">
+    // Called after form input is processed
     function startConnect() {
     // Generate a random client ID
-    clientID = "clientID_" + parseInt(Math.random() * 100);
+    clientID = "clientID-" + parseInt(Math.random() * 100);
 
     // Fetch the hostname/IP address and port number from the form
     host = document.getElementById("url").value;
@@ -39,96 +40,48 @@
 
     // Initialize new Paho client connection
     const client = mqtt.connect(url, { username, password });
-
-    //client = new Paho.MQTT.Client(host, Number(port), clientID);
+    //client = new Paho.MQTT.Client(url, Number(port), clientID);
 
     // Set callback handlers
     client.onConnectionLost = onConnectionLost;
     client.onMessageArrived = onMessageArrived;
 
+    // Connect the client, if successful, call onConnect function
     client.connect({ 
         onSuccess: onConnect,
-        onFailure: document.getElementById("messages").innerHTML += '<span>ERROR: Connection to: ' + url + ' on port: ' + port + ' failed.</span><br/>';
     });
+}
+
+// Called when the client connects
+function onConnect() {
+    // Fetch the MQTT topic from the form
+    topic = document.getElementById("topic").value;
+
+    // Print output for the user in the messages div
+    document.getElementById("messages").innerHTML += '<span>Subscribing to: ' + topic + '</span><br/>';
+
+    // Subscribe to the requested topic
+    client.subscribe(topic);
+}
+
+// Called when the client loses its connection
+function onConnectionLost(responseObject) {
+    document.getElementById("messages").innerHTML += '<span>ERROR: Connection lost</span><br/>';
+    if (responseObject.errorCode !== 0) {
+        document.getElementById("messages").innerHTML += '<span>ERROR: ' + + responseObject.errorMessage + '</span><br/>';
     }
-    </script>
+}
 
-	
-	
+// Called when a message arrives
+function onMessageArrived(message) {
+    console.log("onMessageArrived: " + message.payloadString);
+    document.getElementById("messages").innerHTML += '<span>Topic: ' + message.destinationName + '  | ' + message.payloadString + '</span><br/>';
+}
 
-    <div id="main" style="border: 1px solid #ccc; margin 20px; padding: 20px; height: 500px; overflow: auto;">⏳ Loading...<br /></div>
-    <script type="text/javascript">
-      const consoleAdd = function (text) {
-        const main = document.getElementById('main');
-        main.innerHTML += text + '<br />';
-        main.scrollTop = main.scrollHeight;
-      }
-
-      // Connection to your MQTT server, using websocket protocol.
-      // Note: you have to activate websocket support on Stackhero console, in your service configuration.
-      // This example uses the library MQTT.js (https://github.com/mqttjs/MQTT.js)
-
-      // IMPORTANT: you should create a dedicated user with limited rights.
-      // Remember that any client using this page can read the source code and get those credentials!
-      // Note: on Node-RED, the websocket URL ends with "/mqtt/"
-      //const url.test2 = 'wss://localhost:8084/mqtt';
-      //const username = 'null';
-      //const password = 'null';
-
-
-      consoleAdd('⏳ Connecting to MQTT server ' + url + '...');
-
-      // Connecting to MQTT server using websockets
-      const client = mqtt.connect(url, { username, password });
-
-      client.on('error', function (error) {
-        consoleAdd('🚨 Error: ' + error);
-      });
-
-      client.on('close', function () {
-        consoleAdd('🔌 Connection has been closed');
-      });
-
-      client.on('reconnect', function () {
-        consoleAdd('⏳ Reconnecting...');
-      });
-
-
-
-      // On MQTT connection, we subscribe to the "presence" topic and send "Hello MQTT" to it.
-      client.on('connect', function () {
-        consoleAdd('✅ Connected!');
-
-        const topic = 'presence';
-        const topic2 = 'room/light';
-	const message = 'Hello MQTT';
-
-        // Subscribe to topic "presence"
-        client.subscribe(topic2, function (err, res) {
-          if (err) {
-            consoleAdd('🚨 Error when subscribing to topic ' + topic2 + ': ' + err);
-            return;
-          }
-
-          // Sending message "Hello MQTT" to topic "presence"
-          consoleAdd('✅ Sending message "' + message + '" to topic "' + topic + '"');
-          client.publish(
-            topic,
-            message,
-            { qos: 2 },
-            function(err) {
-              if (err) {
-                consoleAdd('🚨 Error when publishing to topic ' + topic + ': ' + err);
-              }
-            }
-          );
-        })
-      });
-
-      // Show messages received on every topic
-      client.on('message', function (topic2, message) {
-        consoleAdd('✅ Message received from MQTT server on topic "' + topic2 + '": ' + message);
-      });
-    </script>
-  </body>
+// Called when the disconnection button is pressed
+function startDisconnect() {
+    client.disconnect();
+    document.getElementById("messages").innerHTML += '<span>Disconnected</span><br/>';
+}
+</body>
 </html>
