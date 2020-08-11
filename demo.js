@@ -36,7 +36,7 @@ function startConnect() {
     //useSSL: true,
     username: "admin",
     password: "4887_Alpha",
-    onSuccess:onConnect,
+    //onSuccess:onConnect,
     //onFailure:doFail,
     }
 
