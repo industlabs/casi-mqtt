@@ -30,7 +30,7 @@ function startConnect() {
     client.connect({ 
         onSuccess: onConnect,
         userName : “admin”,
-	    password : “4887_Alpha”
+	password : “4887_Alpha”,
         useSSL: true
 
     });
