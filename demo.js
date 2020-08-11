@@ -12,7 +12,15 @@ function startConnect() {
     document.getElementById("messages").innerHTML += '<span>Using the following client value: ' + clientID + '</span><br/>';
 
     // Initialize new Paho client connection
+    //private static final String username = "admin";
+    //private static final String password = "4887_Alpha";
+    
+    client = new Paho.MQTT.Client()
+    client.username_pw_set(“admin”, “4887_Alpha”)
+    //client.connect(“broker.mqttdashboard.com”)
+
     client = new Paho.MQTT.Client(host, Number(port), clientID);
+   
    
     // const client = mqtt.connect(host, { username, password });
     //const username = 'admin';
@@ -67,4 +75,5 @@ function startDisconnect() {
 function updateScroll() {
     var element = document.getElementById("messages");
     element.scrollTop = element.scrollHeight;
+    
 }
