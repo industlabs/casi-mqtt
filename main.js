@@ -70,7 +70,7 @@ function publish (topic, message, onMessageDeliveredCallback) {
 // connect the client to Cumulocity IoT
 function init () {
     client.connect({
-        userName: tenant + "/" + username,
+        userName: username,
         password: password,
         onSuccess: createDevice
     });
