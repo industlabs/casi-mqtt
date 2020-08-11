@@ -29,8 +29,8 @@ function startConnect() {
     // Connect the client, if successful, call onConnect function
     client.connect({ 
         onSuccess: onConnect,
-        userName : “admin”,
-	password : “4887_Alpha”,
+        userName : 'admin',
+	password : '4887_Alpha',
         useSSL: true
 
     });
