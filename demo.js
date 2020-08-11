@@ -1,7 +1,7 @@
 // Called after form input is processed
 function startConnect() {
     // Generate a random client ID
-    clientID = "clientID-" + parseInt(Math.random() * 100);
+    //clientID = "clientID-" + parseInt(Math.random() * 100);
 
     // Fetch the hostname/IP address and port number from the form
     host = document.getElementById("host").value;
@@ -12,7 +12,8 @@ function startConnect() {
     document.getElementById("messages").innerHTML += '<span>Using the following client value: ' + clientID + '</span><br/>';
 
     // Initialize new Paho client connection
-    client = new Paho.MQTT.Client(host, Number(port), clientID);
+    client = new Paho.MQTT.Client(host);
+	client = new Paho.MQTT.Client(host, Number(port), clientID);
    
     // const client = mqtt.connect(host, { username, password });
     //const username = 'admin';
