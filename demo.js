@@ -12,38 +12,34 @@ function startConnect() {
     document.getElementById("messages").innerHTML += '<span>Using the following client value: ' + clientID + '</span><br/>';
 
     // Initialize new Paho client connection
-    //private static final String username = "admin";
-    //private static final String password = "4887_Alpha";
+    client = new Paho.MQTT.Client(host, Number(port), clientID);
     
-    //client = new Paho.MQTT.Client(host, Number(port), clientID);
-    // set callback handlers
-    //client.onConnectionLost = onConnectionLost;
-    //client.onMessageArrived = onMessageArrived;
-    //var options = {
-    //useSSL: true,
-    //userName: "admin",
-    //password: "4887_Alpha",
-    //onSuccess:onConnect,
-    //onFailure:doFail
-    //}
-   
-    client = new mqtt.connect(host, { username, password });
-    //const username = 'admin';
-    //const password = '4887_Alpha';
-
+    var options = {
+            timeout: 3,
+            useSSL: useTLS,
+            cleanSession: cleansession,
+            onSuccess: onConnect,
+            //onFailure: function (message) {
+           //     $('#status').val("Connection failed: " + message.errorMessage + "Retrying");
+           //     setTimeout(MQTTconnect, reconnectTimeout);
+            }
+        };
+    
     // Set callback handlers
     client.onConnectionLost = onConnectionLost;
     client.onMessageArrived = onMessageArrived;
-     var options = {
-    //useSSL: true,
-    username: "admin",
-    password: "4887_Alpha",
-    onSuccess:onConnect,
-    onFailure:doFail,
+    
+    if (username != null) {
+            options.userName = username;
+            options.password = password;
+        }
+        console.log("Host="+ host + ", port=" + port + ", path=" + path + " TLS = " + useTLS + " username=" + username + " password=" + password);
+        mqtt.connect(options);
     }
-   // Connect the client, if successful, call onConnect function
+
+    // Connect the client, if successful, call onConnect function
     client.connect({ 
-    onSuccess: onConnect,        
+        onSuccess: onConnect,
     });
 }
 
@@ -85,5 +81,4 @@ function startDisconnect() {
 function updateScroll() {
     var element = document.getElementById("messages");
     element.scrollTop = element.scrollHeight;
-    
 }
