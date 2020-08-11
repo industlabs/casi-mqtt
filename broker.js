@@ -1,4 +1,3 @@
- var userPreference;
 	const consoleAdd = function (text) {
         const main = document.getElementById('main');
         main.innerHTML += text + '<br />';
@@ -70,4 +69,3 @@
       client.on('message', function (topic2, message) {
       consoleAdd('✅ Message received from MQTT server on topic "' + topic2 + '": ' + message);
       });
-		document.getElementById("msg").innerHTML = userPreference; 
