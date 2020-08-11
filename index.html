@@ -7,9 +7,18 @@
 
     <h1>MQTT websocket example</h1>
     <br />
-
     First edit this file to define the URL, username and password of your MQTT server.
     <br />
+    <form id="connection-info-form">
+    <b>Hostname or IP Address:</b> 
+    <input id="host" type="text" name="host" value="mqtt.casi.io"><br>
+    <b>Port:</b>
+    <input id="port" type="text" name="port" value="8084"><br>
+    <b>Topic:</b>
+    <input id="topic" type="text" name="topic" value="#"><br><br>
+    <input type="button" onclick="startConnect()" value="Connect">
+    <input type="button" onclick="startDisconnect()" value="Disconnect">
+    </form>
     <br />
 
     <div id="main" style="border: 1px solid #ccc; margin 20px; padding: 20px; height: 500px; overflow: auto;">⏳ Loading...<br /></div>
@@ -32,9 +41,9 @@
       // IMPORTANT: you should create a dedicated user with limited rights.
       // Remember that any client using this page can read the source code and get those credentials!
       // Note: on Node-RED, the websocket URL ends with "/mqtt/"
-      //const url = 'wss://mqtt.casi.io:8084/mqtt';
-      //const username = 'admin';
-      //const password = '4887_Alpha';
+      //const url = 'wss://localhost:8084/mqtt';
+      //const username = 'null';
+      //const password = 'null';
 
 
       consoleAdd('⏳ Connecting to MQTT server ' + url + '...');
