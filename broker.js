@@ -11,7 +11,7 @@
       // IMPORTANT: you should create a dedicated user with limited rights.
       // Remember that any client using this page can read the source code and get those credentials!
       // Note: on Node-RED, the websocket URL ends with "/mqtt/"
-      const url = 'wss://mqtt.casi.io:8084/mqtt';
+     // const url = 'wss://mqtt.casi.io:8084/mqtt';
       //const username = 'null';
       //const password = 'null';
 
