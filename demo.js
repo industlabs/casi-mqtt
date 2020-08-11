@@ -27,9 +27,18 @@ function startConnect() {
     //onFailure:doFail
     //}
    
-    const client = mqtt.connect(host, { username, password });
-    const username = 'admin';
-    const password = '4887_Alpha';
+    client = new mqtt.connect(host, { userName, password });
+    //const userName = 'admin';
+    //const password = '4887_Alpha';
+    client.onConnectionLost = onConnectionLost;
+    client.onMessageArrived = onMessageArrived;
+    var options = {
+    //useSSL: true,
+    userName: "admin",
+    password: "4887_Alpha",
+    onSuccess:onConnect,
+    onFailure:doFail
+    }
 
     // Set callback handlers
     client.onConnectionLost = onConnectionLost;
