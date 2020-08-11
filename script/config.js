@@ -1,4 +1,4 @@
-url.test = 'wss://ws.casi.io:8084/mqtt';
+url = 'wss://ws.casi.io:8084/mqtt';
 // host = '172.16.153.122';	// hostname or IP address
 //host.test = 'mqtt.casi.io';	// hostname or IP address
 //port.test = 8084;
