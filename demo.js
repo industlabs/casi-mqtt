@@ -13,7 +13,7 @@ function startConnect() {
 
     // Initialize new Paho client connection
     client = new Paho.MQTT.Client(host);
-	client = new Paho.MQTT.Client(host, Number(port), clientID);
+    //client = new Paho.MQTT.Client(host, Number(port), clientID);
    
     // const client = mqtt.connect(host, { username, password });
     //const username = 'admin';
