@@ -29,7 +29,6 @@ function startConnect() {
     // Connect the client, if successful, call onConnect function
     client.connect({ 
         onSuccess: onConnect,
-        useSSL: true,
     });
 }
 
@@ -77,6 +76,8 @@ function init () {
     client.connect({
         userName: username,
         password: password,
-       onSuccess: createDevice
+        onSuccess: createDevice,
+        useSSL: true
+
     });
 }
