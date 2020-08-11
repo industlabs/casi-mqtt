@@ -23,11 +23,9 @@ function startConnect() {
     client.onConnectionLost = onConnectionLost;
     client.onMessageArrived = onMessageArrived;
     
-    // Connect the client, with a Username and Password
-    client.connect({
-	onSuccess: onConnect, 
-	userName : “admin”,
-	password : “4887_Alpha”,
+   // Connect the client, if successful, call onConnect function
+    client.connect({ 
+        onSuccess: onConnect,
     });
 }
 
