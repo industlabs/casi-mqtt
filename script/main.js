@@ -55,13 +55,13 @@ function publish (topic, message, onMessageDeliveredCallback) {
 }
 
 // connect the client to Cumulocity IoT
-function init () {
-    client.connect({
-        userName: username,
-        password: password,
-        onSuccess: createDevice
-    });
-}
+//function init () {
+   // client.connect({
+  //      userName: username,
+  //      password: password,
+  //      onSuccess: createDevice
+ //   });
+//}
 
 // display all messages on the page
 function log (message) {
