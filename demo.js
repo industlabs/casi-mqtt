@@ -1,3 +1,15 @@
+// client, user and device details
+//var serverUrl   = "wss://mqtt.casi.io:8084/mqtt";     /* wss://mqtt.cumulocity.com/mqtt for a secure connection */
+//var clientId    = "casi-1020";
+//var device_name = "My JS MQTT device";
+//var tenant      = "";
+var username    = "admin";
+var password    = "4887_Alpha";
+
+
+// configure the client to Cumulocity IoT
+//var client = new Paho.MQTT.Client(serverUrl, clientId);
+
 // Called after form input is processed
 function startConnect() {
     // Generate a random client ID
