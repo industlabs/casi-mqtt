@@ -12,8 +12,9 @@ function startConnect() {
     document.getElementById("messages").innerHTML += '<span>Using the following client value: ' + clientID + '</span><br/>';
 
     // Initialize new Paho client connection
-    //client = new Paho.MQTT.Client(host, Number(port), clientID);
-    const client = mqtt.connect(host, { username, password });
+    client = new Paho.MQTT.Client(host, Number(port), clientID);
+   
+    // const client = mqtt.connect(host, { username, password });
     //const username = 'admin';
    // const password = '4887_Alpha';
 
@@ -21,10 +22,12 @@ function startConnect() {
     // Set callback handlers
     client.onConnectionLost = onConnectionLost;
     client.onMessageArrived = onMessageArrived;
-
-    // Connect the client, if successful, call onConnect function
-    client.connect({ 
-        onSuccess: onConnect,
+    
+    // Connect the client, with a Username and Password
+    client.connect({
+	onSuccess: onConnect, 
+	userName : “admin”,
+	password : “4887_Alpha”
     });
 }
 
