@@ -29,14 +29,6 @@ function startConnect() {
     // Set callback handlers
     client.onConnectionLost = onConnectionLost;
     client.onMessageArrived = onMessageArrived;
-    
-    if (username != null) {
-            options.userName = username;
-            options.password = password;
-        }
-        console.log("Host="+ host + ", port=" + port + ", path=" + path + " TLS = " + useTLS + " username=" + username + " password=" + password);
-        mqtt.connect(options);
-    }
 
     // Connect the client, if successful, call onConnect function
     client.connect({ 
