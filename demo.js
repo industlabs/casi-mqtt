@@ -3,8 +3,8 @@
 //var clientId    = "casi-1020";
 //var device_name = "My JS MQTT device";
 //var tenant      = "";
-var username    = "admin";
-var password    = "4887_Alpha";
+//var username    = "admin";
+//var password    = "4887_Alpha";
 
 // Called after form input is processed
 function startConnect() {
@@ -29,6 +29,10 @@ function startConnect() {
     // Connect the client, if successful, call onConnect function
     client.connect({ 
         onSuccess: onConnect,
+        userName : “admin”,
+	    password : “4887_Alpha”
+        useSSL: true
+
     });
 }
 
@@ -72,12 +76,10 @@ function updateScroll() {
     element.scrollTop = element.scrollHeight;
 }
 
-function init () {
-    client.connect({
-        userName: username,
-        password: password,
-        onSuccess: createDevice,
-        useSSL: true
-
-    });
-}
+//function init () {
+  //  client.connect({
+  //      userName: username,
+  //      password: password,
+  //      onSuccess: createDevice
+  //  });
+//}
